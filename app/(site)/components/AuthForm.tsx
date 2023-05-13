@@ -56,7 +56,13 @@ export function AuthForm() {
       <div className="bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
         <form className="space-y-6 " onSubmit={handleSubmit(onSubmit)}>
           {variant === "REGISTER" && (
-            <Input id="name" label="Nome" register={register} errors={errors} />
+            <Input
+              id="name"
+              label="Nome"
+              register={register}
+              errors={errors}
+              disabled={isLoading}
+            />
           )}
           <Input
             id="email"
@@ -64,6 +70,7 @@ export function AuthForm() {
             type="email"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <Input
             id="password"
@@ -71,6 +78,7 @@ export function AuthForm() {
             type="password"
             register={register}
             errors={errors}
+            disabled={isLoading}
           />
           <div>
             <Button disabled={isLoading} fullWidth type="submit">
@@ -85,7 +93,9 @@ export function AuthForm() {
               <div className="w-full border-t border-gray-300" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">Ou entre com</span>
+              <span className="bg-white px-2 text-gray-500">
+                Ou continue com
+              </span>
             </div>
           </div>
 
@@ -93,11 +103,24 @@ export function AuthForm() {
             <AuthSocialButton
               icon={BsGithub}
               onClick={() => socialAction("github")}
+              disabled={isLoading}
             />
             <AuthSocialButton
               icon={BsGoogle}
               onClick={() => socialAction("google")}
+              disabled={isLoading}
             />
+          </div>
+
+          <div className="flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500">
+            <div>
+              {variant === "LOGIN"
+                ? "Novo no Messenger?"
+                : "Já possui uma conta?"}
+            </div>
+            <div onClick={toggleVariant} className="underline cursor-pointer">
+              {variant === "LOGIN" ? "Criar conta" : "Entrar"}
+            </div>
           </div>
         </div>
       </div>

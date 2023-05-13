@@ -1,19 +1,25 @@
 import { IconType } from "react-icons";
 
+import clsx from "clsx";
+
 interface AuthSocialButtonProps {
   icon: IconType;
   onClick: () => void;
+  disabled?: boolean;
 }
 
 export function AuthSocialButton({
   icon: Icon,
   onClick,
+  disabled,
 }: AuthSocialButtonProps) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className="
+      disabled={disabled}
+      className={clsx(
+        `
       inline-flex
       w-full
       justify-center
@@ -28,7 +34,9 @@ export function AuthSocialButton({
       ring-gray-300
       hover:bg-gray-50
       focus:outline-offset-0
-    "
+  `,
+        disabled && "opacity-50 cursor-default"
+      )}
     >
       <Icon />
     </button>
