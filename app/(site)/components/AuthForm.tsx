@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/app/components/Button";
 import { Input } from "@/app/components/inputs/Input";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
@@ -69,6 +70,11 @@ export function AuthForm() {
             register={register}
             errors={errors}
           />
+          <div>
+            <Button disabled={isLoading} fullWidth type="submit">
+              {variant === "LOGIN" ? "Entre" : "Registre-se"}
+            </Button>
+          </div>
         </form>
       </div>
     </div>
