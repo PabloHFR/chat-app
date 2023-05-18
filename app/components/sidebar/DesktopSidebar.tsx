@@ -2,6 +2,7 @@
 
 import useRoutes from "@/app/hooks/useRoutes";
 import { useState } from "react";
+import { DesktopItem } from "./DesktopItem";
 
 export function DesktopSidebar() {
   const routes = useRoutes();
@@ -42,7 +43,18 @@ export function DesktopSidebar() {
           items-center
           space-y-1
         "
-        ></ul>
+        >
+          {routes.map((item) => (
+            <DesktopItem
+              key={item.label}
+              href={item.href}
+              label={item.label}
+              icon={item.icon}
+              active={item.active}
+              onClick={item.onClick}
+            />
+          ))}
+        </ul>
       </nav>
     </div>
   );
