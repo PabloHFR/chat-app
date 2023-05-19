@@ -3,8 +3,14 @@
 import useRoutes from "@/app/hooks/useRoutes";
 import { useState } from "react";
 import { DesktopItem } from "./DesktopItem";
+import { User } from "@prisma/client";
 
-export function DesktopSidebar() {
+interface DesktopSidebarProps {
+  // As defined in the User Model Prisma Schema
+  currentUser: User;
+}
+
+export function DesktopSidebar({ currentUser }: DesktopSidebarProps) {
   const routes = useRoutes();
   const [isOpen, setIsOpen] = useState(false);
 
