@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    // Receives user register post request and destructures it
+    // Receives user register post request in JSON format and destructures it
     const body = await request.json();
     const { email, name, password } = body;
 
