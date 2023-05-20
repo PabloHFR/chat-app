@@ -1,14 +1,15 @@
 "use client";
 
 import useConversation from "@/app/hooks/useConversation";
-import { Conversation } from "@prisma/client";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { MdOutlineGroupAdd } from "react-icons/md";
+import ConversationBox from "./ConversationBox";
+import { FullConversationType } from "@/app/types";
 
 interface ConversationListProps {
-  initialItems: Conversation[];
+  initialItems: FullConversationType[];
 }
 
 export default function ConversationList({
@@ -53,7 +54,13 @@ export default function ConversationList({
             <MdOutlineGroupAdd size={20} />
           </div>
         </div>
-        {items.map((item) => null)}
+        {items.map((item) => (
+          <ConversationBox
+            key={item.id}
+            data={item}
+            selected={conversationId === item.id}
+          />
+        ))}
       </div>
     </aside>
   );
