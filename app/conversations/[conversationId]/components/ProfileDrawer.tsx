@@ -80,7 +80,7 @@ export default function ProfileDrawer({
                 leave="transform transition ease-in-out duration-500"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="pointer-events-none w-screen max-w-md">
+                <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <div
                     className="
                     flex 
@@ -129,7 +129,7 @@ export default function ProfileDrawer({
                           <Avatar user={otherUser} />
                         </div>
                         <div>{title}</div>
-                        <div className="text-sm -text-gray-500">
+                        <div className="text-sm text-gray-500">
                           {statusText}
                         </div>
                         <div className="flex gap-10 my-8">
@@ -140,7 +140,8 @@ export default function ProfileDrawer({
                             flex-col 
                             gap-3 
                             items-center 
-                            cursor-pointer hover:opacity-75
+                            cursor-pointer 
+                            hover:opacity-75
                           "
                           >
                             <div
