@@ -8,6 +8,7 @@ import { Conversation, User } from "@prisma/client";
 import { format } from "date-fns";
 import { Fragment, useMemo, useState } from "react";
 import { IoClose, IoTrash } from "react-icons/io5";
+import ConfirmModal from "./ConfirmModal";
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -23,7 +24,7 @@ export default function ProfileDrawer({
   onClose,
 }: ProfileDrawerProps) {
   const otherUser = useOtherUser(data);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
 
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), "PP");
@@ -42,11 +43,11 @@ export default function ProfileDrawer({
   }, [data]);
   return (
     <>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <div className="bg-white p-5">
-          <p>Hello</p>
-        </div>
-      </Modal>
+      <ConfirmModal
+        isOpen={confirmOpen}
+        onClose={() => setConfirmOpen(false)}
+      />
+
       <Transition.Root show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={onClose}>
           <Transition.Child
@@ -142,7 +143,7 @@ export default function ProfileDrawer({
                           </div>
                           <div className="flex gap-10 my-8">
                             <div
-                              onClick={() => setIsModalOpen(true)}
+                              onClick={() => setConfirmOpen(true)}
                               className="
                             flex 
                             flex-col 
