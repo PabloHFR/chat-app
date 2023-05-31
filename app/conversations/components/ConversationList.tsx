@@ -40,7 +40,7 @@ export default function ConversationList({
     >
       <div className="px-5">
         <div className="flex justify-between mb-4 pt-4">
-          <div className="text-2xl font-bold text-neutral-800">Messages</div>
+          <div className="text-2xl font-bold text-neutral-800">Mensagens</div>
           <div
             className="
             rounded-full
