@@ -30,7 +30,7 @@ export default function ConfirmModal({ isOpen, onClose }: ConfirmModalProps) {
         router.push("/conversations");
         router.refresh();
       })
-      .catch(() => toast.error("Something went wrong!"))
+      .catch(() => toast.error("Deu alguma coisa errada!"))
       .finally(() => setIsLoading(false));
   }, [conversationId, router, onClose]);
 
