@@ -1,7 +1,9 @@
 "use client";
 
+import { Button } from "@/app/components/Button";
 import Modal from "@/app/components/Modal";
 import { Input } from "@/app/components/inputs/Input";
+import Select from "@/app/components/inputs/Select";
 import { User } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -74,8 +76,35 @@ export default function GroupChatModal({
                 required
                 errors={errors}
               />
+              <Select
+                disabled={isLoading}
+                label="Membros"
+                options={users.map((user) => ({
+                  value: user.id,
+                  label: user.name,
+                }))}
+                onChange={(value) =>
+                  setValue("members", value, {
+                    shouldValidate: true,
+                  })
+                }
+                value={members}
+              />
             </div>
           </div>
+        </div>
+        <div className="mt-6 flex items-center justify-end gap-x-6">
+          <Button
+            disabled={isLoading}
+            onClick={onClose}
+            type="button"
+            secondary
+          >
+            Cancelar
+          </Button>
+          <Button disabled={isLoading} type="submit">
+            Criar
+          </Button>
         </div>
       </form>
     </Modal>
